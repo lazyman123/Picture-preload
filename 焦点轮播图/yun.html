@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>云丁</title>
+  <script src="./js/jquery.1.10.2.js"></script>
+  <script src="./js/jquery.IndexBanner.js"></script>
+  <style>
+    * {margin: 0; padding: 0; text-decoration: none;}
+    #container {width: 600px; height: 400px; margin: 0 auto; overflow: hidden; position: relative;}
+    #list img{width: 600px; height: 400px;float: left;}
+    #list {width: 4200px; height: 400px;z-index: 1;position: absolute;}
+    #button {height: 10px; width: 85px; position: absolute; top: 92.5%; left: 50%; margin: -5px 0 0 -50px; z-index: 2;}
+    .dot {width: 10px; cursor: pointer; height: 10px;border: 1px solid #fff; margin-right: 5px; float: left;border-radius: 50%;background: rgba(0, 0, 0, .5);}
+    .on{background-color: orange;}
+    .arrow {position: absolute;cursor: pointer; top: 180px; width: 40px; height: 40px; font-size: 32px; background: rgba(0, 0, 0, .5); text-align: center;line-height: 35px;border-radius: 50%; z-index: 2;}
+    .arrow:hover {background: rgba(0, 0, 0, .7)}
+    #next {right: 20px;}
+    #prev {left: 20px;}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="list" style="left: -600px;">
+      <img src="./img/5.jpg" alt="">
+      <img src="./img/1.jpg" alt="">
+      <img src="./img/2.jpg" alt="">
+      <img src="./img/3.jpg" alt="">
+      <img src="./img/4.jpg" alt="">
+      <img src="./img/5.jpg" alt="">
+      <img src="./img/1.jpg" alt="">
+    </div>
+
+    <div id="button">
+      <span data-index="1" class="dot on"></span>
+      <span data-index="2" class="dot"></span>
+      <span data-index="3" class="dot"></span>
+      <span data-index="4" class="dot"></span>
+      <span data-index="5" class="dot"></span>
+    </div>
+
+    <div id="prev" class="arrow">&lt;</div>
+    <div id="next" class="arrow">&gt;</div>
+  </div>
+
+  <script>
+    // $(window).load(function () {
+    //   var container = $("#container");
+    //   var list = $("#list");
+    //   var prev = $("#prev");
+    //   var next = $("#next");
+    //   var button = $("#button .dot");
+    //   var index = 1;
+    //   var timer;
+    //   function animate (offset) {
+    //     var left = parseInt(list.css('left')) + offset + 'px';
+    //     list.animate({left: left},300);
+    //   }
+
+    //   next.on('click',function(){
+    //     if(list.is(':animated')){
+    //       return;
+    //     }
+    //     if (parseInt(list.css('left')) <= -3000) {
+    //       list.css('left', '0px');
+    //     }
+    //     // debugger;
+    //     animate(-600);
+    //     if (index == 5) {
+    //       index = 1
+    //     }else {
+    //       index++;
+    //     }
+    //     showButton();
+    //   })
+
+    //   prev.on('click',function(){
+    //     if(list.is(':animated')){
+    //       return;
+    //     }
+    //     if (parseInt(list.css('left')) >= -600) {
+    //       list.css('left', '-3600px');
+    //     }
+    //     animate(600);
+    //     if (index == 1) {
+    //       index = 5
+    //     } else {
+    //       index--;
+    //     }
+    //     showButton();
+    //   })
+
+    //   function play() {
+    //     timer = setInterval(function(){
+    //       next.click();
+    //     }, 2000)
+    //   }
+      
+    //   function stop() {
+    //     clearInterval(timer)
+    //   }
+
+    //   function showButton() {
+    //     button.eq(index - 1).addClass("on").siblings().removeClass("on");
+    //   }
+
+    //   $.each(button,function() {
+        
+    //     $(this).on("click", function () {
+    //       if (list.is(':animated') || $(this).hasClass('on')) {
+    //         return;
+    //       }
+
+    //       var onIndex = parseInt($(this).attr("data-index"));
+    //       var offset = (onIndex - index) * - 600;
+
+    //       animate(offset);
+    //       index = onIndex;
+    //       showButton();
+    //     })
+    //   })
+
+    //   container.on('mousemove', stop);
+    //   container.on('mouseout', play);
+    //   play();
+    // });
+    var container = $("#container");
+
+    container.jquerySlider ({
+      auto: true,
+      times: 200
+    });
+    
+  </script>
+</body>
+</html>
